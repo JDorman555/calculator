@@ -9,14 +9,12 @@ function operate(num1, operator, num2) {
     console.log(multiply(num1, num2));
   }
   else if (operator == '/') {
-    console.log(divide(num1, num2));
+    console.log(buttonide(num1, num2));
   }
   else {
     console.log('Not a valid operator');
   }
 }
-
-
 
 function add(num1, num2) {
   console.log(num1 + num2);
@@ -30,6 +28,14 @@ function multiply(num1, num2) {
   console.log(num1 * num2);
 }
 
-function divide(num1, num2) {
+function buttonide(num1, num2) {
   console.log(num1 / num2);
 }
+
+const btn = document.querySelectorAll('button');
+
+btn.forEach((button) => {
+  button.addEventListener('click', () => {
+    console.log(button.id);
+  });
+});

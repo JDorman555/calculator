@@ -77,6 +77,10 @@ i {
   color: black;
 }
 
+button {
+  color: white;
+}
+
 #name {
   font-weight: 700px;
   color: #458380;
