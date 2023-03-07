@@ -38,6 +38,7 @@ body {
   width: auto;
   flex: 1;
 }
+
 .box {
   font-size: 32px;
   display: flex;
@@ -47,6 +48,10 @@ body {
   flex: 1 0 auto;
   border: 1px solid rgb(238, 238, 238);
   background-color: #7DB9B6;
+}
+
+.box:hover {
+  background-color: #3c6967;
 }
 
 .color-red {
