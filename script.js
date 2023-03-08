@@ -1,35 +1,19 @@
 function operate(num1, operator, num2) {
   if (operator == '+') {
-    console.log(add(num1, num2));
+    return num1 + num2;
   }
   else if (operator == '-') {
-    console.log(subtract(num1, num2));
+    return num1 - num2;
   }
   else if (operator == '*') {
-    console.log(multiply(num1, num2));
+    return num1 * num2;
   }
   else if (operator == '/') {
-    console.log(buttonide(num1, num2));
+    return num1 / num2;
   }
   else {
     console.log('Not a valid operator');
   }
-}
-
-function add(num1, num2) {
-  console.log(num1 + num2);
-}
-
-function subtract(num1, num2) {
-  console.log(num1 - num2);
-}
-
-function multiply(num1, num2) {
-  console.log(num1 * num2);
-}
-
-function buttonide(num1, num2) {
-  console.log(num1 / num2);
 }
 
 const display = document.querySelector('.display');
@@ -37,43 +21,49 @@ const history = document.querySelector('.history');
 const btn = document.querySelectorAll('button');
 
 let arr1 = [];
+let arr2 = [];
+let arr3 = [];
 
 let op = 'null';
+let result = '';
 
 btn.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.id == 'clear') {
       clear();
     }
-    else {
-      arr1.push(button.id);
-      display.textContent = arr1.join('');
+    else if (button.id == '=') {
+      history.textContent = `${arr1.join('')} ${op} ${arr2.join('')} ${button.id}`;
+      arr3 = [arr1.join(''), arr2.join('')];
+      display.textContent = operate(arr3[0], op, arr3[1]);
     }
-    
-    
-    
-
-
-
-    /*
-    if (op == "multiply") {
-      history.textContent += `${display.textContent} ${op}`;
-      display.textContent = '';
-      op = 'null';
-    }
-    else if (button.id == "multiply") {
-      op = button.id;
+    else if (button.id == '*') {
+      op = button.id
     }
     else {
-      display.textContent += `${button.id}`;
+      if (op === '*') {
+        console.log(op);
+        arr2.push(button.id);
+        history.textContent = `${arr1.join('')} ${op}`;
+        display.textContent = arr2.join('');
+      }
+      else {
+        arr1.push(button.id);
+        display.textContent = arr1.join('');
+      }
+
+      
     }
-    */
+
+
     
   });
 });
 
 function clear() {
   arr1 = [];
+  arr2 = [];
+  op = '';
   display.textContent = '';
   history.textContent = '';
 }
