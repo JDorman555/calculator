@@ -32,10 +32,48 @@ function buttonide(num1, num2) {
   console.log(num1 / num2);
 }
 
+const display = document.querySelector('.display');
+const history = document.querySelector('.history');
 const btn = document.querySelectorAll('button');
+
+let arr1 = [];
+
+let op = 'null';
 
 btn.forEach((button) => {
   button.addEventListener('click', () => {
-    console.log(button.id);
+    if (button.id == 'clear') {
+      clear();
+    }
+    else {
+      arr1.push(button.id);
+      display.textContent = arr1.join('');
+    }
+    
+    
+    
+
+
+
+    /*
+    if (op == "multiply") {
+      history.textContent += `${display.textContent} ${op}`;
+      display.textContent = '';
+      op = 'null';
+    }
+    else if (button.id == "multiply") {
+      op = button.id;
+    }
+    else {
+      display.textContent += `${button.id}`;
+    }
+    */
+    
   });
 });
+
+function clear() {
+  arr1 = [];
+  display.textContent = '';
+  history.textContent = '';
+}
