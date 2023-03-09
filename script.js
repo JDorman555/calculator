@@ -1,7 +1,6 @@
 function operate(num1, operator, num2) {
   if (operator == '+') {
-    //fix concat
-    return num1 + num2;
+    return parseFloat(num1) + parseFloat(num2);
   }
   else if (operator == '-') {
     return num1 - num2;
