@@ -1,5 +1,6 @@
 function operate(num1, operator, num2) {
   if (operator == '+') {
+    //fix concat
     return num1 + num2;
   }
   else if (operator == '-') {
@@ -33,9 +34,22 @@ btn.forEach((button) => {
       clear();
     }
     else if (button.id == '=') {
-      history.textContent = `${arr1.join('')} ${op} ${arr2.join('')} ${button.id}`;
-      arr3 = [arr1.join(''), arr2.join('')];
-      display.textContent = operate(arr3[0], op, arr3[1]);
+      if (result != '') {
+        result = operate(result, op, arr2.join(''))
+        display.textContent = result;
+        op = '';
+        arr2 = [];
+      }
+      else {
+        history.textContent = `${arr1.join('')} ${op} ${arr2.join('')} ${button.id}`;
+        arr3 = [arr1.join(''), arr2.join('')];
+        result = operate(arr3[0], op, arr3[1]);
+        display.textContent = result;
+
+        op = '';
+        arr2 = [];
+      }
+      
     }
     else if (button.id == '*' || button.id == '/' || button.id == '+' || button.id == '-') {
       op = button.id
