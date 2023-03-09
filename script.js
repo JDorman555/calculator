@@ -37,11 +37,11 @@ btn.forEach((button) => {
       arr3 = [arr1.join(''), arr2.join('')];
       display.textContent = operate(arr3[0], op, arr3[1]);
     }
-    else if (button.id == '*') {
+    else if (button.id == '*' || button.id == '/' || button.id == '+' || button.id == '-') {
       op = button.id
     }
     else {
-      if (op === '*') {
+      if (op == '*' || op == '/' || op == '+' || op == '-') {
         console.log(op);
         arr2.push(button.id);
         history.textContent = `${arr1.join('')} ${op}`;
@@ -56,7 +56,7 @@ btn.forEach((button) => {
     }
 
 
-    
+
   });
 });
 
