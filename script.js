@@ -59,9 +59,32 @@ btn.forEach((button) => {
       }
       
     }
+
+    // Start here, figure out how to chain operators, i have an idea in mind
+    // whenever a operator is clicked, check if its first time clicked, if so
+    // that shoud mean first num already entered and 2nd num is being entered currently
+    // meaning if an operator is clicked again, it should calculate the first two numbers
+    // at hand, store in result, reset arr2, and push the new numbers to arr2 then finally
+    // if op is pressed again repeat or if equals is pressed then it will output.
+
     // else if button was a operator
     else if (button.id == '*' || button.id == '/' || button.id == '+' || button.id == '-') {
+
+      // if op is not empty, it is 2nd operator being input so calculate first 2 numbers
+      if (op != '') {
+        arr3 = [arr1.join(''), arr2.join('')];
+        result = operate(arr3[0], op, arr3[1]);
+        histEqual.textContent = '=';
+        history.textContent += ` ${op} ${arr2.join('')}`;
+        display.textContent = result;
+
+        arr2 = [];
+        arr1 = [result];
+      }
+
       op = button.id
+      
+
     }
     // else check if operator was already declared
     else {
@@ -104,5 +127,6 @@ function clear() {
   op = '';
   display.textContent = '';
   history.textContent = '';
+  histEqual.textContent = '';
   i = 0;
 }
