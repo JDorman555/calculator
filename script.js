@@ -63,11 +63,14 @@ btn.forEach((button) => {
     // else if button was a operator
     else if (button.id == '*' || button.id == '/' || button.id == '+' || button.id == '-') {
 
+      // operator chaining
       // if op is not empty, it is 2nd operator being input so calculate first 2 numbers
       if (op != '') {
         arr3 = [arr1.join(''), arr2.join('')];
         result = operate(arr3[0], op, arr3[1]);
         histEqual.textContent = '=';
+
+        // if first time ran it wont output w an additional operator
         if (i == 1) {
           history.textContent += ` ${arr2.join('')}`;
           i++;
@@ -94,7 +97,6 @@ btn.forEach((button) => {
         {
           arr2.push(button.id);
           display.textContent = arr2.join('');
-          //history.textContent += ` ${op} ${arr2.join('')}`;
         }
         else {
           arr2.push(button.id);
